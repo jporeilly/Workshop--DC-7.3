@@ -1,0 +1,57 @@
+keycloak:
+  service:
+   type: NodePort
+   nodePort: 30880
+  ingress:
+   enabled: true
+   hosts:
+    - paths:
+        - path: /
+          pathType: Prefix
+
+app-server:
+  service:
+    type: NodePort
+    NodePort: 31083
+  keycloak:
+    authServerUrl: "http://data-catalog.skytap.example:30880/auth"
+  ingress:
+    enabled: true
+    hosts:
+    - paths:
+        - path: /
+          pathType: Prefix
+  untrustedCertsPolicy: ALLOW
+
+## Update: Commented out for version 7.1.1.  A post-installation Job configures minIO. 
+# minio-bundled:
+#  buckets: [{"name": "ldc", "policy": "none"}, {"ldc-demo-data", "policy": "none"}, {"name": "flight-delay-data", "policy": "none"}, {"name": "spark-history", "policy": "none"}, {"name": "ldc-discovery-cache", "policy": "none"}]
+#  accessKey: minioadmin
+#  secretKey: minioadmin
+#  persistence:
+#    enabled: true
+#    size: 5Gi
+#  service:
+#    type: NodePort
+#    nodePort: 30900
+#  consoleService:
+#    type: NodePort
+#    nodePort: 30901
+
+mongodb:
+  service:
+    type: NodePort
+    nodePort: 30017
+  persistence:
+    enabled: true
+    volumeClaim:
+      size: 2Gi
+      accessModes:
+        - ReadWriteOnce
+
+agent:
+  initJDBC:
+    enabled: true  
+
+global:
+  registry: data-catalog.skytap.example:5000         
