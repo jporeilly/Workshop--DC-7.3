@@ -1,4 +1,4 @@
-### <font color='red'>Installation of Data Catalog 7.1.1</font>
+### <font color='red'>Installation of Data Catalog 7.3.0</font>
 
 To download the Data Catalog images and Charts, you will need to contact your Account Manager.
 
@@ -15,16 +15,14 @@ kubectl get namespace
 `login into the Registry:`
 
 ```
-docker login data-catalog.skytap.example:5000
-Username: admin
-Password: password   
+docker login -u dc -p lumada data-catalog.skytap.example:5000   
 ```
 
 `upload images:`
 ```
 cd
 cd Packages
-./ldc-load-images.sh -i ldc-images-7.1.1.tar.gz -r data-catalog.skytap.example:5000
+./ldc-load-images.sh -i ldc-images-7.3.0.tar.gz -r data-catalog.skytap.example:5000
 ```
 Note: Be patient as the images have to be unpacked and then uploaded.
 
@@ -35,7 +33,7 @@ Note: Be patient as the images have to be unpacked and then uploaded.
 `install Data Catalog:`
 ```
 cd Packages
-helm install --wait ldc ldc-7.1.1.tgz -f custom-values.yml -n ldc
+helm install --wait ldc ldc-7.3.0.tgz -f custom-values.yml -n ldc
 ```
 
 `check all Pods:`
