@@ -1,2 +1,2 @@
-# Workshop--LDC-7.3
- Workshop for LDC 7.3
+# Workshop--DC-7.3
+ Workshop for DC 7.3
