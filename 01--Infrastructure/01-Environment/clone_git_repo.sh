@@ -1,4 +1,4 @@
-!/bin/bash
+#!/bin/bash
 
 # =========================================================================================
 # create Workshop--DC-7.3/directory
@@ -7,7 +7,7 @@
 # tidy up directory..
 # dont forget to close and open VSC ..
 #
-# 09/01/2023
+# 13/01/2023
 # =========================================================================================
 
 #set the loads of variables
@@ -16,12 +16,11 @@ remoteUser=jporeilly
 localUser=installer
 remoteDir=Workshop--DC-7.3
 remoteRepo=https://$remoteHost/$remoteUser/$remoteDir
-localDir=/installers
-localDirW=/installers/Workshop--DC-7.3
+localDirW=~/Workshop--DC-7.3
 ansPlaybooks=/etc/ansible/playbooks
 mod_01E=$localDirW/01--Infrastructure/01-Environment
 mod_01A=$localDirW/01--Infrastructure/02-Ansible
-mod_02=$localDirW/02--Pre-flight
+mod_02=$localDirW/02--Preflight
 mod_03=$localDirW/03--Data-Catalog
 mod_04=$localDirW/04--Workshop
 
