@@ -42,7 +42,7 @@ fi
     echo "Copying over Module 01 - Infrastructure .."
     sudo cp -rfp $mod_01E/*  $ansPlaybooks
     sudo cp -rfp $mod_01A/*  $ansPlaybooks
-    echo "Copying over Module 02 - Pre-flight .."
+    echo "Copying over Module 02 - Preflight .."
     sudo cp -rfp $mod_02/*  $ansPlaybooks
     echo "Copying over Module 03 - Data Catalog .."
     sudo cp -rfp $mod_03/*  $ansPlaybooks
