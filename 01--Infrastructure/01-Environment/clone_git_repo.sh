@@ -7,7 +7,8 @@
 # tidy up directory..
 # dont forget to close and open VSC ..
 # 
-# If you reboot the server, clone_workshop.service will reset the /etc/ansible
+# If you reboot the server, clone_workshop.service will reset the /etc/ansible/playbooks
+#
 # 16/01/2023
 # =========================================================================================
 
