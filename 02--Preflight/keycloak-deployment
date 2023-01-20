@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    io.kompose.service: keycloak
+  name: keycloak
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: keycloak
+  template:
+    metadata:
+      labels:
+        io.kompose.service: keycloak
+    spec:
+      containers:
+      - env:
+        - name: DB_ADDR
+          value: postgres-keycloak
+        - name: DB_DATABASE
+          valueFrom:
+            secretKeyRef:
+              name: postgres-secret
+              key: postgres-database
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: postgres-secret
+              key: postgres-password
+        - name: DB_USER
+          valueFrom:
+            secretKeyRef:
+              name: postgres-secret
+              key: postgres-username
+        - name: DB_VENDOR
+          value: POSTGRES
+        - name: KEYCLOAK_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: keycloak-secret
+              key: keycloak-password
+        - name: KEYCLOAK_USER
+          valueFrom:
+            secretKeyRef:
+              name: keycloak-secret
+              key: keycloak-username
+        image: quay.io/keycloak/keycloak:10.0.1
+        imagePullPolicy: ""
+        name: keycloak
+        ports:
+        - containerPort: 8443
+        resources: {}
+      restartPolicy: Always
+      serviceAccountName: ""
+      volumes: null
